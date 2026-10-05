@@ -1,0 +1,216 @@
+@import "tailwindcss";
+
+/*
+  TOKENS
+  Every value traces to the Phase 1 teardown (CSS px, measured at DPR 1.25)
+  or to a numbered assumption. Default palettes, radii, shadows, type sizes
+  and container sizes are cleared so only project tokens can be used.
+*/
+@theme {
+  --color-*: initial;
+  --radius-*: initial;
+  --shadow-*: initial;
+  --text-*: initial;
+  --container-*: initial;
+
+    /* Color. Dark only. Hex values are visual estimates (assumption 2). */
+  --color-bg: #0a0a0a;
+  --color-fg: #fafafa;
+  --color-prose: #e5e5e5;
+  --color-muted: #a1a1a1;
+  --color-rule: #1c1c1c;
+  --color-line: #2e2e2e;
+  --color-strong: #e5e5e5;
+  /* The UI accent. Soft fill and outline are derived with /10 and /30 modifiers. */
+  --color-accent: #10b981;
+  /* Header link hover, requested. The dot grid hover uses the same value via --dot-lit. */
+  --color-hover: #d97757;
+
+  /* Radius. Pills only; everything else is square. */
+  --radius-pill: 9999px;
+
+    /* Type scale. Reduced about 10% from the teardown sizes by request. */
+  --text-display: clamp(2rem, 1.1rem + 3.6vw, 3.125rem); /* was 56px max */
+  --text-display--line-height: 1.1;
+  --text-display--letter-spacing: -0.02em;
+
+  --text-title: 2rem; /* was 36px */
+  --text-title--line-height: 1.15;
+  --text-title--letter-spacing: -0.02em;
+
+  --text-heading: 1rem; /* was 18px */
+  --text-heading--line-height: 1.5;
+
+  --text-tagline: 1.125rem; /* was 20px */
+  --text-tagline--line-height: 1.5;
+
+  --text-lead: 1rem; /* was 18px */
+  --text-lead--line-height: 1.7;
+
+  --text-base: 0.9375rem; /* was 16px */
+  --text-base--line-height: 1.7;
+
+  --text-nav: 0.84375rem; /* 13.5px header wordmark and links, 10% below the 15px base */
+  --text-nav--line-height: 1.6;
+
+  --text-pill: 0.8125rem; /* was 14px */
+  --text-pill--line-height: 1.5;
+
+  /* Tracking for uppercase section labels. */
+  --tracking-label: 0.04em;
+
+    /* Spacing. Base unit reduced 10% (4px to 3.6px) by request; named layout values reduced to match. */
+  --spacing: 0.225rem;
+  --spacing-header: 4.05rem; /* about 65px header height, was 72px */
+  --spacing-page: 5.4rem; /* about 86px main top and bottom padding, was 96px */
+  --spacing-hero: 7.65rem; /* about 122px home hero padding, was 136px */
+  --spacing-section: 3.6rem; /* about 58px between sections, was 64px */
+  --spacing-gutter: 1.35rem; /* about 22px side padding on narrow screens, was 24px */
+
+  /* Widths. */
+  --container-content: 48rem; /* 768px content column, was 864px */
+  --container-measure: 46rem; /* about 736px paragraph measure, was 816px */
+  --container-entry: 38rem; /* 608px experience description measure, was 672px */
+}
+
+/* The font variable is injected by next/font on <html>, so resolve it at use time. */
+@theme inline {
+  --font-sans:
+    var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    sans-serif;
+}
+
+:root {
+  color-scheme: dark;
+
+  /* Motion (assumption 4). */
+  --dur-ui: 250ms;
+  --dur-rule: 300ms;
+
+  /* Dot grid (assumption 7, amended by request). */
+  --dot-pitch: 20px; /* was 32px, reduced 40% by request */
+  --dot-reach: 70px; /* radius of the pointer hover reveal */
+  --dot-base: rgb(255 255 255 / 0.03);
+  --dot-lit: #d97757; /* hover color, requested; separate from the UI accent */
+  --dot-menu: rgb(255 255 255 / 0.22); /* mobile menu overlay dots, about 5x the page grid */
+}
+
+/* Registered so the pointer position can ease between frames. */
+@property --mx {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: -9999px;
+}
+
+@property --my {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: -9999px;
+}
+
+@utility page-container {
+  margin-inline: auto;
+  width: 100%;
+  max-width: calc(var(--container-content) + 2 * var(--spacing-gutter));
+  padding-inline: var(--spacing-gutter);
+}
+
+@layer base {
+  html {
+    @apply bg-bg;
+  }
+
+  body {
+    @apply bg-bg font-sans text-base text-prose antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Visible focus state (assumption 12). */
+  :focus-visible {
+    outline: 2px solid var(--color-fg);
+    outline-offset: 4px;
+  }
+}
+
+@layer components {
+  /* Fixed full-viewport dot layers, painted behind all page content. */
+  .dot-layer {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image: radial-gradient(
+      circle at center,
+      var(--dot-color) 1px,
+      transparent 1.5px
+    );
+    background-size: var(--dot-pitch) var(--dot-pitch);
+  }
+
+  .dot-layer--base {
+    --dot-color: var(--dot-base);
+  }
+
+  /* Colored copy of the grid, revealed through a mask that follows the pointer. */
+  .dot-layer--lit {
+    --dot-color: var(--dot-lit);
+    opacity: 0;
+    -webkit-mask-image: radial-gradient(
+      circle var(--dot-reach) at var(--mx) var(--my),
+      #000 0%,
+      transparent 100%
+    );
+    mask-image: radial-gradient(
+      circle var(--dot-reach) at var(--mx) var(--my),
+      #000 0%,
+      transparent 100%
+    );
+    transition:
+      opacity 400ms ease-out,
+      --mx var(--dur-rule) ease-out,
+      --my var(--dur-rule) ease-out;
+  }
+
+  .dot-layer--lit[data-active="true"] {
+    opacity: 1;
+  }
+
+  /* Brighter, slightly larger dots painted on the mobile menu overlay. */
+  .menu-dots {
+    background-image: radial-gradient(
+      circle at center,
+      var(--dot-menu) 1.25px,
+      transparent 1.75px
+    );
+    background-size: var(--dot-pitch) var(--dot-pitch);
+  }
+
+  /* Project list and experience list: siblings of the hovered item dim. */
+  .project-item,
+  .experience-item {
+    transition: opacity var(--dur-ui) ease-out;
+  }
+
+  @media (hover: hover) {
+    .project-list:has(.project-item:hover) .project-item:not(:hover),
+    .experience-list:has(.experience-item:hover) .experience-item:not(:hover) {
+      opacity: 0.38;
+    }
+  }
+
+  .project-list:has(.project-item:focus-within)
+    .project-item:not(:focus-within) {
+    opacity: 0.38;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
