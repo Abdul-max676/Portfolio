@@ -3,8 +3,9 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { ArrowLink } from "@/components/arrow-link";
 import { Mail, Phone, Social } from "@/components/icons";
-import { contact, nav, site } from "@/lib/content";
+import { contact, nav, resume, site } from "@/lib/content";
 
 const socialIcons = {
   email: Mail,
@@ -139,29 +140,37 @@ export function MobileMenu() {
           </Link>
         </div>
 
-        <nav
-          aria-label="Primary"
-          className="flex flex-1 items-center justify-center"
-        >
-          <ul className="flex flex-col items-center gap-8 text-center">
-            {nav.map((item) => {
-              const active =
-                pathname === item.href || pathname.startsWith(`${item.href}/`);
-              return (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    onClick={close}
-                    aria-current={active ? "page" : undefined}
-                    className="relative inline-block text-display font-semibold text-fg transition-colors duration-(--dur-ui) ease-out after:absolute after:inset-x-0 after:-bottom-1 after:h-0.5 after:origin-left after:scale-x-0 after:bg-fg after:transition-[transform,background-color] after:duration-(--dur-ui) after:ease-out hover:text-hover hover:after:bg-hover focus-visible:text-hover aria-[current=page]:after:scale-x-100"
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </nav>
+        <div className="flex flex-1 flex-col items-center justify-center gap-12">
+          <nav aria-label="Primary">
+            <ul className="flex flex-col items-center gap-8 text-center">
+              {nav.map((item) => {
+                const active =
+                  pathname === item.href || pathname.startsWith(`${item.href}/`);
+                return (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      onClick={close}
+                      aria-current={active ? "page" : undefined}
+                      className="relative inline-block text-display font-semibold text-fg transition-colors duration-(--dur-ui) ease-out after:absolute after:inset-x-0 after:-bottom-1 after:h-0.5 after:origin-left after:scale-x-0 after:bg-fg after:transition-[transform,background-color] after:duration-(--dur-ui) after:ease-out hover:text-hover hover:after:bg-hover focus-visible:text-hover aria-[current=page]:after:scale-x-100"
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
+
+          <ArrowLink
+            href={resume.download.href}
+            download={resume.download.filename}
+            variant="cta"
+            onClick={close}
+          >
+            {resume.download.label}
+          </ArrowLink>
+        </div>
 
         <div className="page-container pb-12">
           <ul aria-label="Contact and social" className="flex justify-center gap-4">

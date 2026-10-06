@@ -23,8 +23,8 @@
   --color-strong: #e5e5e5;
   /* The UI accent. Soft fill and outline are derived with /10 and /30 modifiers. */
   --color-accent: #10b981;
-  /* Header link hover, requested. The dot grid hover uses the same value via --dot-lit. */
-  --color-hover: #d97757;
+  /* Hover color: header links, CTA buttons, project and experience lines, mobile menu. */
+  --color-hover: #10b981;
 
   /* Radius. Pills only; everything else is square. */
   --radius-pill: 9999px;
@@ -89,9 +89,9 @@
 
   /* Dot grid (assumption 7, amended by request). */
   --dot-pitch: 20px; /* was 32px, reduced 40% by request */
-  --dot-reach: 70px; /* radius of the pointer hover reveal */
+  --dot-reach: 100px; /* radius of the pointer hover reveal */
   --dot-base: rgb(255 255 255 / 0.03);
-  --dot-lit: #d97757; /* hover color, requested; separate from the UI accent */
+  --dot-lit: #10b981; /* hover color, separate from the UI accent */
   --dot-menu: rgb(255 255 255 / 0.22); /* mobile menu overlay dots, about 5x the page grid */
 }
 

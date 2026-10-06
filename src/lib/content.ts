@@ -78,122 +78,93 @@ export const home = {
 
 export const resume = {
   summary:
-    "I’m a second-year Computer Science student building practical experience in web development and software development, with a growing focus on creating useful, real-world applications. My current stack includes HTML, CSS, JavaScript, React, Vite, Git, and GitHub, with Python as a developing strength and an interest in AI-assisted development. I’m currently focused on improving my frontend development skills, building projects, learning modern development workflows, and gradually expanding into full-stack development. One of my flagship projects is LearnTech Oto, an educational resource platform concept designed to improve access to learning materials, alongside smaller projects such as personal websites, habit-tracking tools, and experiments with AI-assisted development. I also enjoy breaking down what I learn, helping others understand technical concepts, and developing my ability to teach through practical examples" ,
+    "I'm a frontend developer based in Lagos, with 1 year of experience. I'm currently working on my portfolio as a collaborative developer. I spend part of most weeks honing my skills.",
+  download: {
+    label: "Resume (PDF)",
+    href: "/resume.pdf",
+    filename: "resume.pdf",
+  },
   experience: [
-    {
-      role: "[Role Title One]",
-      company: "[Company Name One]",
-      description:
-        "[Sentence describing the scope of this role.] [Sentence describing the tools and responsibilities.] [Sentence describing the outcome or growth that followed.]",
-      dateRange: "[Month Year] to [Month Year]",
-    },
-    {
-      role: "[Role Title Two]",
-      company: "[Company Name Two]",
-      description:
-        "[Sentence describing the scope of this role.] [Sentence describing the tools and responsibilities.]",
-      dateRange: "[Month Year] to [Month Year]",
-    },
-    {
-      role: "[Role Title Three]",
-      company: "[Company Name Three]",
-      description:
-        "[Sentence describing the scope of this role.] [Sentence describing the tools and responsibilities.] [Sentence describing the outcome or growth that followed.]",
-      dateRange: "[Month Year] to [Month Year]",
-    },
-    {
-      role: "[Role Title Four]",
-      company: "[Company Name Four]",
-      description:
-        "[Sentence describing the scope of this role.] [Sentence describing the tools and responsibilities.]",
-      dateRange: "[Month Year] to [Month Year]",
-    },
-    {
-      role: "[Role Title Five]",
-      company: "[Company Name Five]",
-      description: "[Sentence describing the scope of this role.]",
-      dateRange: "[Month Year] to [Month Year]",
-    },
+  {
+  role: "Product Designer",
+  company: "Nexus Technologies",
+  description:
+    "Led end-to-end design operations across three cross-functional product squads delivering core platform features. Utilizing Figma and Mixpanel, I conducted user research and built design systems to streamline feature deployment. This resulted in a 35% improvement in user retention and cut overall design handoff time in half.",
+  dateRange: "Jan 2026 — Present",
+  },
+
+  {
+  role: "Growth Marketing Specialist",
+  company: "ABC Digital Solutions",
+  description:
+    "Managed high-velocity digital marketing campaigns and organic growth strategies for a flagship consumer brand. Leveraged Google Analytics, Hubspot, and SQL to optimize conversion funnels and execute multivariate testing. The initiative expanded organic web traffic by 60% and scaled paid media ROI by 2.5x year-over-year.",
+  dateRange: "June 2025 — Dec 2025",
+  },
+
+{
+  role: "Senior DevOps Engineer",
+  company: "Vanguard Cloud Services",
+  description:
+    "Directed backend infrastructure migration and API integration for enterprise-level cloud services. Deployed Docker, Kubernetes, and AWS to automate deployment pipelines and strengthen system reliability. The upgrade reduced platform downtime by 40% while accommodating a doubling of active monthly users.",
+  dateRange: "Dec 2024 — May 2025",
+},
   ] satisfies ExperienceItem[],
-  skills: [
-    { label: "[Skill Group One]", items: placeholders("Skill", 14) },
+    skills: [
     {
-      label: "[Skill Group Two]",
-      items: placeholders("Tool", 4),
+      label: "Languages and Frameworks",
+      items: [
+        "Python",
+        "HTML",
+        "CSS",
+      ],
+    },
+    {
+      label: "Tools and Platforms",
+      items: ["Git", "GitHub", "Vercel"],
     },
   ] satisfies SkillGroup[],
   languagesAndInterests:
-    "[Languages: Language One, Language Two.] [Interests: Interest One, Interest Two.]",
+    "Languages: English, Interests: Movies, AI",
 };
-
-const caseStudySections: CaseStudySection[] = [
-  {
-    label: "Problem",
-    body: "A developer needed a personal portfolio to showcase their skills, projects, and experience. It needed to give potential collaborators and employers a clear view of their work.",
-  },
-  {
-    label: "Outcome",
-    body: "I designed and developed an AI-assisted responsive portfolio to showcase my skills, projects, and experience. It features a clean, modern design, intuitive navigation, and interactive elements that highlight my work. The portfolio is optimized for performance and accessibility, ensuring a seamless experience across devices.",
-  },
-];
 
 export const projects: Project[] = [
   {
-  slug: "project-one",
-  name: "Portfolio",
-  status: "In Progress",
-  description: "A developer portfolio showcasing my work, skills, and what it’s like to collaborate with me.",
-  stack: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
-  liveHref: "https://example.com/project-one",
-  repoHref: "https://github.com/Abdul-max676/Portfolio",
-  sections: caseStudySections,
-  },
-  {
-    slug: "project-two",
-    name: "[Project Two]",
-    status: "[Category Label]",
-    description: "[One-line description of the project and who it serves.]",
-    stack: placeholders("Tech", 5),
+    slug: "audiobook",
+    name: "Audiobook Idea",
+    status: "Not Started",
+    description: "Turns PDF books into audio for people who'd rather listen than stare at a screen.",
+    stack: ["Python", "Open AI"],
     liveHref: "https://example.com/project-two",
-    repoHref: "https://github.com/Abdul-max676/Portfolio",
-    sections: caseStudySections,
+    repoHref: "https://example.com/your-handle/project-two",
+    sections: [
+      {
+        label: "Problem",
+        body: "Many people only have a book as a PDF, can't get a print copy, and find reading on a screen tiring. They needed an app that reads the PDF aloud so they can listen instead.",
+      },
+      {
+        label: "Outcome",
+        body: "I built the app end to end as the only developer and since it hasn't commenced, I'm open to collaboration. It now converts PDF books into audio that anyone can listen to anywhere.",
+      },
+    ],
   },
   {
-    slug: "project-three",
-    name: "[Project Three]",
-    description: "[One-line description of the project.]",
-    stack: placeholders("Tech", 4),
-    liveHref: "https://example.com/project-three",
+    slug: "portfolio",
+    name: "Portfolio",
+    status: "In Progress",
+    description: "A personal portfolio to showcase my work and skills, and to reach out to potential clients and collaborators.",
+    stack: ["Next.js", "TypeScript", "Tailwind CSS", "React"],
+    liveHref: "https://abdulmalik-ajiboye.vercel.app/",
     repoHref: "https://github.com/Abdul-max676/Portfolio",
-    sections: caseStudySections,
-  },
-  {
-    slug: "project-four",
-    name: "[Project Four]",
-    description: "[One-line description of the project.]",
-    stack: placeholders("Tech", 4),
-    liveHref: "https://example.com/project-four",
-    repoHref: "https://github.com/Abdul-max676/Portfolio",
-    sections: caseStudySections,
-  },
-  {
-    slug: "project-five",
-    name: "[Project Five]",
-    description: "[One-line description of the project.]",
-    stack: placeholders("Tech", 3),
-    liveHref: "https://example.com/project-five",
-    repoHref: "https://github.com/Abdul-max676/Portfolio",
-    sections: caseStudySections,
-  },
-  {
-    slug: "project-six",
-    name: "[Project Six]",
-    status: "[Highlight Label]",
-    description: "[One-line description of the project and what it manages.]",
-    stack: placeholders("Tech", 6),
-    liveHref: "https://example.com/project-six",
-    repoHref: "https://github.com/Abdul-max676/Portfolio",
-    sections: caseStudySections,
+    sections: [
+      {
+        label: "Problem",
+        body: "[Project One: two sentences describing who needed this project and what they needed it to do.]",
+      },
+      {
+        label: "Outcome",
+        body: "[Project One: sentence describing your contribution and role.] [Project One: sentence describing what was delivered.]",
+      },
+    ],
   },
 ];
 

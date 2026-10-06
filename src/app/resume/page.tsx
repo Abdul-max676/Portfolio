@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ArrowLink } from "@/components/arrow-link";
 import { Chip } from "@/components/chip";
 import { ExperienceEntry } from "@/components/experience-entry";
 import { SectionLabel } from "@/components/section-label";
@@ -9,7 +10,16 @@ export const metadata: Metadata = { title: "Resume" };
 export default function ResumePage() {
   return (
     <div className="page-container py-page">
-      <h1 className="text-title font-semibold text-fg">Resume</h1>
+      <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-3">
+        <h1 className="text-title font-semibold text-fg">Resume</h1>
+        <ArrowLink
+          href={resume.download.href}
+          download={resume.download.filename}
+          variant="cta"
+        >
+          {resume.download.label}
+        </ArrowLink>
+      </div>
 
       <section aria-labelledby="summary-heading" className="mt-12">
         <SectionLabel id="summary-heading">Summary</SectionLabel>
@@ -20,7 +30,7 @@ export default function ResumePage() {
 
       <section aria-labelledby="experience-heading" className="mt-section">
         <SectionLabel id="experience-heading">Experience</SectionLabel>
-          <ol className="experience-list mt-5">
+        <ol className="experience-list mt-5">
           {resume.experience.map((entry) => (
             <ExperienceEntry key={entry.company} {...entry} />
           ))}
@@ -46,10 +56,7 @@ export default function ResumePage() {
         </div>
       </section>
 
-      <section
-        aria-labelledby="languages-heading"
-        className="mt-section"
-      >
+      <section aria-labelledby="languages-heading" className="mt-section">
         <SectionLabel id="languages-heading">
           Languages and Interests
         </SectionLabel>
