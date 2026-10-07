@@ -86,28 +86,21 @@ export const resume = {
   },
   experience: [
   {
-  role: "Product Designer",
-  company: "Nexus Technologies",
+  role: "Junior developer",
+  company: "NIIT ForteSoft",
   description:
-    "Led end-to-end design operations across three cross-functional product squads delivering core platform features. Utilizing Figma and Mixpanel, I conducted user research and built design systems to streamline feature deployment. This resulted in a 35% improvement in user retention and cut overall design handoff time in half.",
-  dateRange: "Jan 2026 — Present",
+    "Underwent the prerequisites required to learn and syntax based language such as Python, I was later guided towards learning python generally, took and exam, and then proceeded to learn some of the frameworks required to implement it.",
+  dateRange: "August 2026 — Present",
   },
 
   {
-  role: "Growth Marketing Specialist",
-  company: "ABC Digital Solutions",
+  role: "IT training coordinator",
+  company: "Ikorodu Local Government",
   description:
     "Managed high-velocity digital marketing campaigns and organic growth strategies for a flagship consumer brand. Leveraged Google Analytics, Hubspot, and SQL to optimize conversion funnels and execute multivariate testing. The initiative expanded organic web traffic by 60% and scaled paid media ROI by 2.5x year-over-year.",
   dateRange: "June 2025 — Dec 2025",
   },
-
-{
-  role: "Senior DevOps Engineer",
-  company: "Vanguard Cloud Services",
-  description:
-    "Directed backend infrastructure migration and API integration for enterprise-level cloud services. Deployed Docker, Kubernetes, and AWS to automate deployment pipelines and strengthen system reliability. The upgrade reduced platform downtime by 40% while accommodating a doubling of active monthly users.",
-  dateRange: "Dec 2024 — May 2025",
-},
+  
   ] satisfies ExperienceItem[],
     skills: [
     {
