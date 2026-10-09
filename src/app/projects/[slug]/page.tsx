@@ -5,6 +5,7 @@ import { ArrowLink } from "@/components/arrow-link";
 import { Badge } from "@/components/badge";
 import { Chip } from "@/components/chip";
 import { ArrowLeft, GitHub } from "@/components/icons";
+import { ProjectMedia } from "@/components/project-media";
 import { SectionLabel } from "@/components/section-label";
 import { getProject, projects } from "@/lib/content";
 
@@ -69,6 +70,8 @@ export default async function CaseStudyPage({ params }: PageProps) {
           </ArrowLink>
         ) : null}
       </div>
+
+      {project.media ? <ProjectMedia media={project.media} /> : null}
 
       {project.sections.map((section, index) => {
         const headingId = `${section.label.toLowerCase()}-heading`;

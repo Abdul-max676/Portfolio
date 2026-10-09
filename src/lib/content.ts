@@ -1,8 +1,3 @@
-/*
-  Placeholder content only. Every user-facing string is a bracketed slot that
-  matches the real slot's length and rhythm. Links use example.com values.
-  Replace these values with your own content.
-*/
 
 export type NavItem = { label: string; href: string };
 
@@ -27,6 +22,7 @@ export type Project = {
   stack: string[];
   liveHref: string;
   repoHref?: string;
+  media?: MediaItem;
   sections: CaseStudySection[];
 };
 
@@ -39,6 +35,10 @@ export type ContactItem = {
   href: string;
 };
 
+export type MediaItem =
+  | { type: "image"; src: string; alt: string }
+  | { type: "video"; src: string; poster: string; alt: string };
+
 /** Builds ["[Skill 01]", "[Skill 02]", ...] style placeholders. */
 function placeholders(noun: string, count: number): string[] {
   return Array.from({ length: count }, (_, i) => {
@@ -50,7 +50,7 @@ function placeholders(noun: string, count: number): string[] {
 export const site = {
   name: "Abdulmalik Ajiboye",
   initials: "AA",
-  description: "[One-sentence description of this portfolio.]",
+  description: "Personal portfolio for showcasing skills, and collaborations",
   city: "Lagos, Nigeria",
   year: "2026",
 };
@@ -68,8 +68,8 @@ export const home = {
   bio: "I'm a frontend developer based in Lagos, with 1 year of experience. I'm currently working on my portfolio as a collaborative developer. I spend part of most weeks honing my skills.",
   stats: [
     { value: 1, suffix: "+", label: "year of experience" },
-    { value: 1, suffix: "+", label: "handled projects" },
-    { value: 1, suffix: "+", label: "projects deployed" },
+    { value: 1, suffix: "+", label: "handled project" },
+    { value: 1, suffix: "+", label: "project deployed" },
     { value: 0, suffix: "+", label: "collaborations" },
   ] satisfies Stat[],
   primaryCta: { label: "View Resume", href: "/resume" },
@@ -122,40 +122,45 @@ export const resume = {
 
 export const projects: Project[] = [
   {
-    slug: "audiobook",
-    name: "Audiobook Idea",
-    status: "Not Started",
+    slug: "typesage",
+    name: "Type Sage",
+    status: "Not started",
     description: "Turns PDF books into audio for people who'd rather listen than stare at a screen.",
     stack: ["Python", "Open AI"],
     liveHref: "https://example.com/project-two",
     repoHref: "https://example.com/your-handle/project-two",
+    media: {
+    type: "image",
+    src: "/portfolio.webp",
+    alt: "An image of this project",
+    },
+
     sections: [
       {
         label: "Problem",
-        body: "Many people only have a book as a PDF, can't get a print copy, and find reading on a screen tiring. They needed an app that reads the PDF aloud so they can listen instead.",
+        body: "TypeSage is a typing tutor platform that helps users improve their typing speed, accuracy, and consistency through interactive practice.",
       },
       {
         label: "Outcome",
-        body: "I built the app end to end as the only developer and since it hasn't commenced, I'm open to collaboration. It now converts PDF books into audio that anyone can listen to anywhere.",
+        body: "I designed and developed TypeSage using AI-assisted tools, guiding its functionality, interface, and user experience. The result is an interactive typing tutor that helps users practise typing, track performance, and improve speed and accuracy.",
       },
     ],
   },
+
   {
     slug: "portfolio",
     name: "Portfolio",
-    status: "In Progress",
     description: "A personal portfolio to showcase my work and skills, and to reach out to potential clients and collaborators.",
     stack: ["Next.js", "TypeScript", "Tailwind CSS", "React"],
     liveHref: "https://abdulmalik-ajiboye.vercel.app/",
-    repoHref: "https://github.com/Abdul-max676/Portfolio",
     sections: [
       {
         label: "Problem",
-        body: "[Project One: two sentences describing who needed this project and what they needed it to do.]",
+        body: "A developer portfolio showcasing my work, skills, and what it’s like to collaborate with me.",
       },
       {
         label: "Outcome",
-        body: "[Project One: sentence describing your contribution and role.] [Project One: sentence describing what was delivered.]",
+        body: "I designed and developed the project with AI-assisted tools, making key decisions on its structure, content, and user experience. The result is a responsive, user-focused website built to deliver a clear and accessible browsing experience.",
       },
     ],
   },
@@ -166,7 +171,7 @@ export function getProject(slug: string): Project | undefined {
 }
 
 export const projectsPage = {
-  intro: "A list of everything i've made. Most recent first.",
+  intro: "A list of everything that made it to the end.. Most recent first.",
 };
 
 export const contact = {
@@ -188,8 +193,8 @@ export const contact = {
     {
       kind: "social",
       label: "LinkedIn",
-      value: "example.com/in/your-handle",
-      href: "https://example.com/in/your-handle",
+      value: "linkedin.com/in/abdulmalik-ajiboye",
+      href: "https://www.linkedin.com/in/abdulmalik-ajiboye/",
     },
   ] satisfies ContactItem[],
 };
