@@ -171,7 +171,7 @@ export function getProject(slug: string): Project | undefined {
 }
 
 export const projectsPage = {
-  intro: "A list of everything that made it to the end.. Most recent first.",
+  intro: "A list of everything i've made.Most recent first.",
 };
 
 export const contact = {
